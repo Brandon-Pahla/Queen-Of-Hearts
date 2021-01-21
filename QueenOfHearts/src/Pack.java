@@ -6,16 +6,25 @@ import java.util.HashMap;
  */
 public class Pack {
     private final int numberOfCards = 52;
-    private final HashMap pack = new HashMap();
+    private String[] suits;
+    private HashMap<String, Cards> pack = new HashMap<String, Cards>();
 
-    public Pack(){
-        Card card = new Card();
-        addCards("Spades",card);
+    public Pack(String [] suits){
+        this.suits = suits;
+        for(int i = 0; i < 4; i++ ){
+            pack.put(suits[i], new Cards());
+        }
+//        System.out.println(pack.get(suits[0]).getCards()[4]);
     }
 
-    private void addCards(String suit, Card card){
-        pack.put(suit,card.cards());
+    public void printPack(){
+        String[] suits = {"Spades", "Clubs", "Hears", "Diamonds"};
+        for(int i = 0; i < 4; i++ ){
+            for (int j = 0; j < 13; j ++){
+                System.out.println(pack.get(suits[i]).getCards()[j] + " of " + suits[i]);
+
+            }
+        }
     }
 
-    
 }
