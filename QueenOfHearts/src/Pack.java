@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * @author brandonpahla
@@ -39,9 +40,14 @@ public class Pack {
     }
 
     public void shuffle(){
-        
+        Random rand = new Random();
+        for (int i = 0; i < deck.length; i++) {
+            int randomIndexToSwap = rand.nextInt(deck.length);
+            String temp = deck[randomIndexToSwap];
+            deck[randomIndexToSwap] = deck[i];
+            deck[i] = temp;
+        }
     }
-
 
     public String[] getDeck(){
         return deck;
