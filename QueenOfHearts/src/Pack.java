@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -7,6 +8,7 @@ import java.util.HashMap;
 public class Pack {
     private final int numberOfCards = 52;
     private String[] suits;
+    private String[] deck = new String[numberOfCards];
     private HashMap<String, Cards> pack = new HashMap<String, Cards>();
 
     public Pack(String [] suits){
@@ -14,17 +16,39 @@ public class Pack {
         for(int i = 0; i < 4; i++ ){
             pack.put(suits[i], new Cards());
         }
-//        System.out.println(pack.get(suits[0]).getCards()[4]);
+        packageCards();
     }
 
-    public void printPack(){
+    public void packageCards(){
         String[] suits = {"Spades", "Clubs", "Hears", "Diamonds"};
+        String card;
+        int head = 0;
         for(int i = 0; i < 4; i++ ){
             for (int j = 0; j < 13; j ++){
-                System.out.println(pack.get(suits[i]).getCards()[j] + " of " + suits[i]);
+                if(pack.get(suits[i]).getCards()[j].equals("10")){
+                    card = pack.get(suits[i]).getCards()[j] + "    of " + suits[i];
+                }
+                else{
+                    card = pack.get(suits[i]).getCards()[j] + "     of " + suits[i] ;
+                }
+                deck[head] = card;
+                head ++;
 
             }
         }
+    }
+
+    public void shuffle(){
+        
+    }
+
+
+    public String[] getDeck(){
+        return deck;
+    }
+
+    public String toString(){
+        return Arrays.toString(deck);
     }
 
 }
