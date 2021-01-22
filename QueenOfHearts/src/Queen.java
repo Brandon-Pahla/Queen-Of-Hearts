@@ -87,4 +87,8 @@ public class Queen {
         Game();
 
     }
+
+//    TODO:
+//     create a game class and put these methods to the game class
+//     fix the winning process
 }
