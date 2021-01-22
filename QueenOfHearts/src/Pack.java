@@ -21,17 +21,12 @@ public class Pack {
     }
 
     public void packageCards(){
-        String[] suits = {"Spades", "Clubs", "Hears", "Diamonds"};
+        String[] suits = {"Spades", "Clubs", "Hearts", "Diamonds"};
         String card;
         int head = 0;
         for(int i = 0; i < 4; i++ ){
             for (int j = 0; j < 13; j ++){
-                if(pack.get(suits[i]).getCards()[j].equals("10")){
-                    card = pack.get(suits[i]).getCards()[j] + "    of " + suits[i];
-                }
-                else{
-                    card = pack.get(suits[i]).getCards()[j] + "     of " + suits[i] ;
-                }
+                card = pack.get(suits[i]).getCards()[j] + " of " + suits[i];
                 deck[head] = card;
                 head ++;
 
