@@ -21,6 +21,8 @@ public class Queen {
     private static final String CONGRATS = " <<<You win, congratulations!!!>>";
     private static final String TRY_AGAIN = ">>>Please pick again";
     private static boolean win = false;
+    private static Scanner keyboard = new Scanner(System.in);
+
     private static void Game() {
         String[] suits = {"Spades", "Clubs", "Hearts", "Diamonds"};
         Pack pack = new Pack(suits);
@@ -54,20 +56,28 @@ public class Queen {
         return picked;
     }
 
+    private static void displayAllCards(boolean printCards){
+        if(printCards){
+            printList(pickedCards);
+        }
+    }
+
     private static void isWin(String card){
-        boolean isQueenOfHearts = card.equals("Q of Hearts");
+        boolean isQueenOfHearts = card.equals("Queen of Hearts");
         if (isQueenOfHearts){
             System.out.println(ANSI_BLUE + CONGRATS + ANSI_RESET);
-            System.out.println("you picked the following cards in order to reach to the Queen of Hearts");
-            printList(pickedCards);
+            System.out.println("you picked the following " + pickedCards.length + " cards in order to reach to the Queen of Hearts");
+            System.out.print("Should all the cards be printed? [yes/no]:  ");
+            String input = keyboard.nextLine();
+            boolean response = input.equals("yes");
+            displayAllCards(response);
             win = true;
         }else {
-            System.out.println(ANSI_PURPLE + TRY_AGAIN + ANSI_RESET);
+            System.out.print(ANSI_PURPLE + TRY_AGAIN + ANSI_RESET);
         }
     }
 
     private static void gameLogic(Pack pack){
-        Scanner keyboard = new Scanner(System.in);
         System.out.print(">>> Please press enter to pick a card!");
         while(true){
             String command = keyboard.nextLine();
@@ -88,7 +98,4 @@ public class Queen {
 
     }
 
-//    TODO:
-//     create a game class and put these methods to the game class
-//     fix the winning process
 }

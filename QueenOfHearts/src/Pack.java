@@ -21,7 +21,7 @@ public class Pack {
     }
 
     public void packageCards(){
-        String[] suits = {"Spades", "Clubs", "Hearts", "Diamonds"};
+//        String[] suits = {"Spades", "Clubs", "Hearts", "Diamonds"};
         String card;
         int head = 0;
         for(int i = 0; i < 4; i++ ){
